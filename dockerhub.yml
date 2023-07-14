@@ -191,6 +191,7 @@ services:
 
   websocket:
     image: vu3bta/maesoft:v1.0
+    deploy:
       restart_policy:
         condition: on-failure
     command:
