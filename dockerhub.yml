@@ -2,7 +2,7 @@ version: "3"
 
 services:
   backend:
-    image: vu3bta/maesoft:v1.0
+    image: vu3bta/maesoft:v1.1
     deploy:
       restart_policy:
         condition: on-failure
@@ -11,7 +11,7 @@ services:
       - logs:/home/frappe/frappe-bench/logs
 
   configurator:
-    image: vu3bta/maesoft:v1.0
+    image: vu3bta/maesoft:v1.1
     deploy:
       restart_policy:
         condition: none
@@ -39,7 +39,7 @@ services:
       - logs:/home/frappe/frappe-bench/logs
 
   create-site:
-    image: vu3bta/maesoft:v1.0
+    image: vu3bta/maesoft:v1.1
     deploy:
       restart_policy:
         condition: none
@@ -71,7 +71,7 @@ services:
         bench new-site frontend --no-mariadb-socket --admin-password=admin --db-root-password=admin --install-app erpnext --set-default;
 
   db:
-    image: vu3bta/maesoft:v1.0
+    image: mariadb:10.6
     healthcheck:
       test: mysqladmin ping -h localhost --password=admin
       interval: 1s
@@ -90,7 +90,7 @@ services:
       - db-data:/var/lib/mysql
 
   frontend:
-    image: vu3bta/maesoft:v1.0
+    image: vu3bta/maesoft:v1.1
     deploy:
       restart_policy:
         condition: on-failure
@@ -112,7 +112,7 @@ services:
       - "80:8080" # Alter for port mapping
 
   queue-default:
-    image: vu3bta/maesoft:v1.0
+    image: vu3bta/maesoft:v1.1
     deploy:
       restart_policy:
         condition: on-failure
@@ -126,7 +126,7 @@ services:
       - logs:/home/frappe/frappe-bench/logs
 
   queue-long:
-    image: vu3bta/maesoft:v1.0
+    image: vu3bta/maesoft:v1.1
     deploy:
       restart_policy:
         condition: on-failure
@@ -140,7 +140,7 @@ services:
       - logs:/home/frappe/frappe-bench/logs
 
   queue-short:
-    image: vu3bta/maesoft:v1.0
+    image: vu3bta/maesoft:v1.1
     deploy:
       restart_policy:
         condition: on-failure
@@ -178,7 +178,7 @@ services:
       - redis-socketio-data:/data
 
   scheduler:
-    image: vu3bta/maesoft:v1.0
+    image: vu3bta/maesoft:v1.1
     deploy:
       restart_policy:
         condition: on-failure
@@ -190,7 +190,7 @@ services:
       - logs:/home/frappe/frappe-bench/logs
 
   websocket:
-    image: vu3bta/maesoft:v1.0
+    image: vu3bta/maesoft:v1.1
     deploy:
       restart_policy:
         condition: on-failure
